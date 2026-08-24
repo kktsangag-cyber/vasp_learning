@@ -1,0 +1,15 @@
+EDIFF = 1e-06
+EDIFFG = -0.02
+ENCUT = 400.0
+IBRION = 2
+ICHARG = 2
+ISIF = 2
+ISMEAR = 0
+ISPIN = 2
+ISTART = 0
+ISYM = 0
+LCHARG = False
+LWAVE = False
+NSW = 100
+SIGMA = 0.05
+SYSTEM = O2 adsorbed on clean Cr(110)
