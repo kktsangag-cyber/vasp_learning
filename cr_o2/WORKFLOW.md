@@ -21,7 +21,7 @@
 
 ## Energy Summary & Adsorption Formula
 
-$$E_{\text{ads}} = E_{\text{slab+O}_2} - \left(E_{\text{clean\_slab}} + E_{\text{O}_2\text{ (gas)}}\right)$$
+$$E_{\text{ads}} = E_{\text{slab+O}_2} - \left(E_{\text{clean\_slab}} + E_{\text{O}_2\text{, gas}}\right)$$
 
 | System | Directory | Total Energy `TOTEN` (eV) | Status |
 | :--- | :--- | :--- | :--- |
