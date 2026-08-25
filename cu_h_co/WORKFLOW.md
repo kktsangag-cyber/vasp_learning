@@ -7,9 +7,10 @@
 - `co_gas/`: Isolated $\text{CO}$ molecule relaxation in a cubic vacuum box ($15\times15\times15\text{ Å}^3$).
 - `cu_h_slab/`: $\text{*H}$ atom placed at on-top site on relaxed Cu(110) $2\times2$ surface.
 - `cu_co_slab/`: $\text{*CO}$ molecule placed at on-top site on relaxed Cu(110) $2\times2$ surface.
-- `cu_in_abs/`: Static run of frozen Cu slab fragment alone (in $2\times2$ supercell for DCD).
-- `h_in_abs/`: Static run of frozen $\text{*H}$ adsorbate fragment alone (in $2\times2$ supercell for DCD).
-- `co_in_abs/`: Static run of frozen $\text{*CO}$ adsorbate fragment alone (in $2\times2$ supercell for DCD).
+- `cu_in_cuco_abs/`: Static run of frozen Cu slab fragment alone from Cu-CO system (in $2\times2$ supercell for DCD).
+- `cu_in_cuh_abs/`: Static run of frozen Cu slab fragment alone from Cu-H system (in $2\times2$ supercell for DCD).
+- `h_in_cuh_abs/`: Static run of frozen $\text{*H}$ adsorbate fragment alone (in $2\times2$ supercell for DCD).
+- `co_in_cuco_abs/`: Static run of frozen $\text{*CO}$ adsorbate fragment alone (in $2\times2$ supercell for DCD).
 
 ---
 
@@ -55,10 +56,61 @@ $$E_{\text{ads, CO}} = E_{\text{cu\_co\_slab}} - E_{\text{cu\_110\_slab}} - E_{\
 
 ## Post-Processing Analysis Workflows
 
-### 1. Differential Charge Density (DCD)
-* **Equation:** $\Delta\rho = \rho_{\text{adsorbed\_slab}} - \rho_{\text{cu\_in\_abs}} - \rho_{\text{adsorbate\_in\_abs}}$
-* **Tool:** VASPKIT Option `314`
-* **Execution:**
-  ```bash
-  vaspkit -task 314
-  # Inputs: cu_co_slab/CHGCAR cu_in_abs/CHGCAR co_in_abs/CHGCAR
+## 1. Charge-Density Difference (DCD) Analysis
+
+### 1.1 Mathematical Formulation
+$$\Delta\rho = \rho_{\text{adsorbed\_slab}} - \rho_{\text{clean\_slab}} - \rho_{\text{adsorbate}}$$
+
+* **$\Delta\rho > 0$ (Yellow isosurface):** Electron accumulation / charge redistribution.
+* **$\Delta\rho < 0$ (Cyan/Blue isosurface):** Electron depletion.
+
+### 1.2 Execution via VASPKIT
+1. Ensure all 3 static calculations share **identical unit cell boundaries, KPOINTS, and hardcoded FFT grids (`NGXF`, `NGYF`, `NGZF`)**.
+2. Run VASPKIT task `314` in terminal:
+
+VASPKIT outputs **`CHGDIFF.vasp`**, which can be loaded directly into VESTA for 3D visualization.
+
+---
+
+## 2. Bader Charge Analysis
+
+### 2.1 Quantities & Formulas
+Charge transfer ($\Delta q$) for an atom with $Z$ valence electrons is calculated as:
+$$\Delta q = Z - q_{\text{Bader}}$$
+
+* **$Z$:** Valence electron count of the neutral pseudopotential (e.g., $Z_{\text{Cu}} = 11$, $Z_{\text{C}} = 4$, $Z_{\text{O}} = 6$).
+* **$q_{\text{Bader}}$:** Integrated electron population read from column `CHARGE` in **`ACF.dat`**.
+
+### 2.2 Physical Interpretation
+* **$\Delta q > 0$:** Electron depletion (atom acts as electron donor).
+* **$\Delta q < 0$:** Electron accumulation (atom acts as electron acceptor).
+* **Adsorption Delta:** Comparing $q_{\text{Bader}}$ of isolated molecules vs. adsorbed species yields net interfacial charge transfer.
+
+---
+
+## 3. COHP & ICOHP Analysis (LOBSTER)
+
+### 3.1 Data Extraction & File Structure (`COHPCAR.lobster`)
+Run `lobster` to produce `COHPCAR.lobster`. 
+1. **Verify Bond Counting**
+   * The number of bonds included in the COHP analysis must match the number of bonds identified in `distance.dat`.
+2. **Structure of `COHPCAR.lobster`**
+
+| Column | Description |
+| :--- | :--- |
+| **Col 1** | Energy ($E - E_{\text{F}}$ in eV) |
+| **Col 2** | Average COHP |
+| **Col 3** | Average ICOHP |
+| **Col 4 / 5** | COHP / ICOHP of Pair 1 |
+| **Col 6 / 7** | COHP / ICOHP of Pair 2 |
+| ... | ... |
+
+### 3.2 Plotting & Interpretation Principles
+1. **Energy–COHP Plotting:** 
+   * **X-axis:** Column 1 ($E - E_{\text{F}}$).
+   * **Y-axis:** Column 2 (or $-\text{COHP}$ depending on software convention).
+   * **Interpretation:** States below $E_{\text{F}}$ ($E < 0$) with positive COHP represent occupied bonding states; states with negative COHP represent occupied antibonding states.
+2. **Energy–ICOHP (Bond Strength):**
+   * **X-axis:** Column 1 ($E - E_{\text{F}}$).
+   * **Y-axis:** Column 3 (Average ICOHP).
+   * **Interpretation:** Evaluated at $E_{\text{F}} = 0.00\text{ eV}$. **More negative ICOHP values indicate stronger chemical bonding interactions.**
