@@ -27,6 +27,9 @@ slab_gen = SlabGenerator(
 slabs = slab_gen.get_slabs()
 cu_slab = slabs[0]
 
+# make a 2x2 Supercell
+cu_slab.make_supercell([2, 2, 1])
+
 # add selective dynamics for POSCAR
 cu_slab.sort(key=lambda site: site.c)
 
@@ -35,7 +38,7 @@ freeze_cutoff = int(num_sites * 0.6)
 
 selective_dynamics = []
 for i in range(num_sites):
-    if i <= freeze_cutoff:
+    if i < 16:
         selective_dynamics.append([False, False, False])
     else:
         selective_dynamics.append([True, True, True])
@@ -45,7 +48,7 @@ Poscar(cu_slab, selective_dynamics=selective_dynamics).write_file(os.path.join(s
 print("POSCAR with Selective Dynamics generated")
 
 # write KPOINTS
-kpts = Kpoints.gamma_automatic(kpts=(9, 9, 1))    # Only one k-point is usually needed along the vacuum direction
+kpts = Kpoints.gamma_automatic(kpts=(5, 5, 1))    # Only one k-point is usually needed along the vacuum direction
 kpts.write_file(os.path.join(slab_dir, "KPOINTS"))
 print("KPOINTS generated")
 

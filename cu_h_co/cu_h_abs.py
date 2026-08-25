@@ -23,9 +23,6 @@ slab = Slab(
     site_properties=slab_struct.site_properties
 )
 
-# 2. Make a 2x2 Supercell to prevent artificial CO-CO image interactions (0.25 ML coverage)
-slab.make_supercell([2, 2, 1])
-
 # build H atom
 h_atom = Molecule(["H"], [[0, 0, 0]])
 
