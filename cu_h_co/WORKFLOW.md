@@ -32,12 +32,12 @@
 ## Energy Summary & Formulas
 
 ### 1. Surface Energy ($\gamma$)
-$$\gamma = \frac{E_{\text{cu\_110\_slab}} - N_{\text{atoms}} \cdot E_{\text{bulk\_per\_atom}}}{2A}$$
+$$\gamma = \frac{E_{\text{cu(110) slab}} - N_{\text{atoms}} \cdot E_{\text{bulk per atom}}}{2A}$$
 
 ### 2. Adsorption Energies ($E_{\text{ads}}$)
-$$E_{\text{ads, H}} = E_{\text{cu\_h\_slab}} - E_{\text{cu\_110\_slab}} - \frac{1}{2} E_{\text{h2\_gas}}$$
+$$E_{\text{ads, H}} = E_{\text{cu-h slab}} - E_{\text{cu(110)slab}} - \frac{1}{2} E_{\text{h2 gas}}$$
 
-$$E_{\text{ads, CO}} = E_{\text{cu\_co\_slab}} - E_{\text{cu\_110\_slab}} - E_{\text{co\_gas}}$$
+$$E_{\text{ads, CO}} = E_{\text{cu-co slab}} - E_{\text{cu(110) slab}} - E_{\text{co gas}}$$
 
 | System | Directory | Total Energy `TOTEN` (eV) | Status |
 | :--- | :--- | :--- | :--- |
@@ -59,7 +59,7 @@ $$E_{\text{ads, CO}} = E_{\text{cu\_co\_slab}} - E_{\text{cu\_110\_slab}} - E_{\
 ## 1. Charge-Density Difference (DCD) Analysis
 
 ### 1.1 Mathematical Formulation
-$$\Delta\rho = \rho_{\text{adsorbed\_slab}} - \rho_{\text{clean\_slab}} - \rho_{\text{adsorbate}}$$
+$$\Delta\rho = \rho_{\text{adsorbed slab}} - \rho_{\text{clean slab}} - \rho_{\text{adsorbate}}$$
 
 * **$\Delta\rho > 0$ (Yellow isosurface):** Electron accumulation / charge redistribution.
 * **$\Delta\rho < 0$ (Cyan/Blue isosurface):** Electron depletion.
