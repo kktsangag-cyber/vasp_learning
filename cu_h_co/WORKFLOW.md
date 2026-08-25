@@ -32,12 +32,12 @@
 ## Energy Summary & Formulas
 
 ### 1. Surface Energy ($\gamma$)
-$$\gamma = \frac{E_{\text{cu(110) slab}} - N_{\text{atoms}} \cdot E_{\text{bulk per atom}}}{2A}$$
+$$\gamma = \frac{E_{\text{Cu(110) slab}} - N_{\text{atoms}} \cdot E_{\text{bulk per atom}}}{2A}$$
 
 ### 2. Adsorption Energies ($E_{\text{ads}}$)
-$$E_{\text{ads, H}} = E_{\text{cu-h slab}} - E_{\text{cu(110)slab}} - \frac{1}{2} E_{\text{h2 gas}}$$
+$$E_{\text{ads, H}} = E_{\text{Cu-H slab}} - E_{\text{Cu(110)slab}} - \frac{1}{2} E_{\text{H2 gas}}$$
 
-$$E_{\text{ads, CO}} = E_{\text{cu-co slab}} - E_{\text{cu(110) slab}} - E_{\text{co gas}}$$
+$$E_{\text{ads, CO}} = E_{\text{Cu-CO slab}} - E_{\text{Cu(110) slab}} - E_{\text{CO gas}}$$
 
 | System | Directory | Total Energy `TOTEN` (eV) | Status |
 | :--- | :--- | :--- | :--- |
