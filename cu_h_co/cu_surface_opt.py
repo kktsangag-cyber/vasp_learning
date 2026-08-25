@@ -3,8 +3,8 @@ from pymatgen.core.structure import Structure
 from pymatgen.core.surface import SlabGenerator
 from pymatgen.io.vasp.inputs import Poscar, Kpoints, Incar
 
-bulk_poscar_path = "cr_o2/cr_bulk/POSCAR"  # Use CONTCAR if VASP was run
-slab_dir = "cr_o2/cr_110_slab"
+bulk_poscar_path = "cu_h_co/cu_bulk/POSCAR"  # Use CONTCAR if VASP was run
+slab_dir = "cu_h_co/cu_110_slab"
 os.makedirs(slab_dir, exist_ok=True)
 
 # Load relaxed bulk structure
@@ -25,12 +25,12 @@ slab_gen = SlabGenerator(
 )
 
 slabs = slab_gen.get_slabs()
-cr_slab = slabs[0]
+cu_slab = slabs[0]
 
 # add selective dynamics for POSCAR
-cr_slab.sort(key=lambda site: site.c)
+cu_slab.sort(key=lambda site: site.c)
 
-num_sites = len(cr_slab)
+num_sites = len(cu_slab)
 freeze_cutoff = int(num_sites * 0.6)
 
 selective_dynamics = []
@@ -40,10 +40,8 @@ for i in range(num_sites):
     else:
         selective_dynamics.append([True, True, True])
 
-cr_slab.add_site_property("selective_dynamics", selective_dynamics)
-
 # write POSCAR
-Poscar(cr_slab).write_file(os.path.join(slab_dir, "POSCAR"))
+Poscar(cu_slab, selective_dynamics=selective_dynamics).write_file(os.path.join(slab_dir, "POSCAR"))
 print("POSCAR with Selective Dynamics generated")
 
 # write KPOINTS
@@ -53,11 +51,11 @@ print("KPOINTS generated")
 
 # write INCAR
 incar_dict = {
-    "SYSTEM": "clean Cr(110) surface",
+    "SYSTEM": "clean Cu(110) surface",
 
     # Start Parameters
     "ISTART": 0,
-    "ISPIN": 2,  
+    "ISPIN": 1,                 # Cu is non-magnetic
     "ICHARG": 2,
     "LWAVE": False,
     "LCHARG": False,

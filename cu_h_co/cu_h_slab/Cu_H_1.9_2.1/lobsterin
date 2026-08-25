@@ -1,0 +1,6 @@
+COHPstartEnergy  -20.0
+COHPendEnergy    10.0
+usebasisset pbeVaspFit2015
+basisfunctions Cu 3d 4s
+basisfunctions H 1s
+cohpGenerator from 1.9 to 2.1 type Cu type H

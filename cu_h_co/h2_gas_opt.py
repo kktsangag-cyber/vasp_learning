@@ -3,30 +3,30 @@ import numpy as np
 from pymatgen.core.structure import Molecule
 from pymatgen.io.vasp.inputs import Poscar, Incar, Kpoints
 
-o2_gas_dir = "cr_o2/o2_gas"
-os.makedirs(o2_gas_dir, exist_ok=True)
+h2_gas_dir = "cu_h_co/h2_gas"
+os.makedirs(h2_gas_dir, exist_ok=True)
 
-# build o2 in cubic cell
-o2_mol = Molecule(
-    species=["O", "O"],
+# build h2 in cubic cell
+h2_mol = Molecule(
+    species=["H", "H"],
     coords=[
-        [0.0, 0.0, -0.605],
-        [0.0, 0.0, 0.605]
+        [0.0, 0.0, -0.37],
+        [0.0, 0.0, 0.37]
     ]
 )
 
-o2_box = o2_mol.get_boxed_structure(15.0, 15.0, 15.0)
+h2_box = h2_mol.get_boxed_structure(15.0, 15.0, 15.0)
 
 # write POSCAR
-Poscar(o2_box).write_file(os.path.join(o2_gas_dir, "POSCAR"))
+Poscar(h2_box).write_file(os.path.join(h2_gas_dir, "POSCAR"))
 
 # write INCAR
 incar_dict = {
-    "SYSTEM": "o2 gas molecule",
+    "SYSTEM": "h2 gas molecule",
 
     # Start Parameters
     "ISTART": 0,
-    "ISPIN": 2,  
+    "ISPIN": 1,                 # H2 is non-magnetic
     "ICHARG": 2,
     "LWAVE": False,
     "LCHARG": False,
@@ -43,11 +43,11 @@ incar_dict = {
     "ISIF": 2,                       
     "EDIFFG": -0.02, 
 }
-Incar.from_dict(incar_dict).write_file(os.path.join(o2_gas_dir, "INCAR"))
+Incar.from_dict(incar_dict).write_file(os.path.join(h2_gas_dir, "INCAR"))
 
-# write KPOINTS
+# 5. Write KPOINTS (Gamma-point only for isolated gas phase)
 kpoints = Kpoints.gamma_automatic(kpts=(1, 1, 1))
-kpoints.write_file(os.path.join(o2_gas_dir, "KPOINTS"))
+kpoints.write_file(os.path.join(h2_gas_dir, "KPOINTS"))
 
 print("Input files generated")
 

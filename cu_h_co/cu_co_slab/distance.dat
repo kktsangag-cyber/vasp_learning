@@ -1,0 +1,68 @@
+distance = 1.13, Number=1
+    C25-O26
+distance = 2.0, Number=1
+    Cu23-C25
+distance = 2.53, Number=104
+    Cu1-Cu2   Cu1-Cu3   Cu1-Cu5   Cu1-Cu6   Cu1-Cu7   Cu1-Cu8   Cu2-Cu4   Cu2-Cu5   Cu2-Cu6   Cu2-Cu7   Cu2-Cu8   Cu3-Cu4   Cu3-Cu5   Cu3-Cu6   Cu3-Cu7   Cu3-Cu8   Cu4-Cu5   Cu4-Cu6   Cu4-Cu7   Cu4-Cu8   Cu5-Cu6   Cu5-Cu7   Cu5-Cu9   Cu5-Cu10   Cu5-Cu11   Cu5-Cu12   Cu6-Cu8   Cu6-Cu9   Cu6-Cu10   Cu6-Cu11   Cu6-Cu12   Cu7-Cu8   Cu7-Cu9   Cu7-Cu10   Cu7-Cu11   Cu7-Cu12   Cu8-Cu9   Cu8-Cu10   Cu8-Cu11   Cu8-Cu12   Cu9-Cu10   Cu9-Cu11   Cu9-Cu13   Cu9-Cu14   Cu9-Cu15   Cu9-Cu16   Cu10-Cu12   Cu10-Cu13   Cu10-Cu14   Cu10-Cu15   Cu10-Cu16   Cu11-Cu12   Cu11-Cu13   Cu11-Cu14   Cu11-Cu15   Cu11-Cu16   Cu12-Cu13   Cu12-Cu14   Cu12-Cu15   Cu12-Cu16   Cu13-Cu14   Cu13-Cu15   Cu13-Cu17   Cu13-Cu18   Cu13-Cu19   Cu13-Cu20   Cu14-Cu16   Cu14-Cu17   Cu14-Cu18   Cu14-Cu19   Cu14-Cu20   Cu15-Cu16   Cu15-Cu17   Cu15-Cu18   Cu15-Cu19   Cu15-Cu20   Cu16-Cu17   Cu16-Cu18   Cu16-Cu19   Cu16-Cu20   Cu17-Cu18   Cu17-Cu19   Cu17-Cu21   Cu17-Cu22   Cu17-Cu23   Cu17-Cu24   Cu18-Cu20   Cu18-Cu21   Cu18-Cu22   Cu18-Cu23   Cu18-Cu24   Cu19-Cu20   Cu19-Cu21   Cu19-Cu22   Cu19-Cu23   Cu19-Cu24   Cu20-Cu21   Cu20-Cu22   Cu20-Cu23   Cu20-Cu24   Cu21-Cu22   Cu21-Cu23   Cu22-Cu24   Cu23-Cu24
+distance = 3.13, Number=1
+    Cu23-O26
+distance = 3.225, Number=2
+    Cu21-C25   Cu24-C25
+distance = 3.577, Number=28
+    Cu1-Cu4   Cu1-Cu12   Cu2-Cu3   Cu2-Cu11   Cu3-Cu10   Cu4-Cu9   Cu5-Cu8   Cu5-Cu16   Cu6-Cu7   Cu6-Cu15   Cu7-Cu14   Cu8-Cu13   Cu9-Cu12   Cu9-Cu20   Cu10-Cu11   Cu10-Cu19   Cu11-Cu18   Cu12-Cu17   Cu13-Cu16   Cu13-Cu24   Cu14-Cu15   Cu14-Cu23   Cu15-Cu22   Cu16-Cu21   Cu17-Cu20   Cu18-Cu19   Cu21-Cu24   Cu22-Cu23
+distance = 4.024, Number=2
+    Cu21-O26   Cu24-O26
+distance = 4.099, Number=1
+    Cu22-C25
+distance = 4.19, Number=4
+    Cu17-C25   Cu18-C25   Cu19-C25   Cu20-C25
+distance = 4.381, Number=32
+    Cu1-Cu10   Cu1-Cu11   Cu2-Cu9   Cu2-Cu12   Cu3-Cu9   Cu3-Cu12   Cu4-Cu10   Cu4-Cu11   Cu5-Cu14   Cu5-Cu15   Cu6-Cu13   Cu6-Cu16   Cu7-Cu13   Cu7-Cu16   Cu8-Cu14   Cu8-Cu15   Cu9-Cu18   Cu9-Cu19   Cu10-Cu17   Cu10-Cu20   Cu11-Cu17   Cu11-Cu20   Cu12-Cu18   Cu12-Cu19   Cu13-Cu22   Cu13-Cu23   Cu14-Cu21   Cu14-Cu24   Cu15-Cu21   Cu15-Cu24   Cu16-Cu22   Cu16-Cu23
+distance = 4.753, Number=1
+    Cu22-O26
+distance = 5.059, Number=16
+    Cu1-Cu9   Cu2-Cu10   Cu3-Cu11   Cu4-Cu12   Cu5-Cu13   Cu6-Cu14   Cu7-Cu15   Cu8-Cu16   Cu9-Cu17   Cu10-Cu18   Cu11-Cu19   Cu12-Cu20   Cu13-Cu21   Cu14-Cu22   Cu15-Cu23   Cu16-Cu24
+distance = 5.234, Number=4
+    Cu17-O26   Cu18-O26   Cu19-O26   Cu20-O26
+distance = 5.577, Number=1
+    Cu14-C25
+distance = 5.656, Number=48
+    Cu1-Cu13   Cu1-Cu14   Cu1-Cu15   Cu1-Cu16   Cu2-Cu13   Cu2-Cu14   Cu2-Cu15   Cu2-Cu16   Cu3-Cu13   Cu3-Cu14   Cu3-Cu15   Cu3-Cu16   Cu4-Cu13   Cu4-Cu14   Cu4-Cu15   Cu4-Cu16   Cu5-Cu17   Cu5-Cu18   Cu5-Cu19   Cu5-Cu20   Cu6-Cu17   Cu6-Cu18   Cu6-Cu19   Cu6-Cu20   Cu7-Cu17   Cu7-Cu18   Cu7-Cu19   Cu7-Cu20   Cu8-Cu17   Cu8-Cu18   Cu8-Cu19   Cu8-Cu20   Cu9-Cu21   Cu9-Cu22   Cu9-Cu23   Cu9-Cu24   Cu10-Cu21   Cu10-Cu22   Cu10-Cu23   Cu10-Cu24   Cu11-Cu21   Cu11-Cu22   Cu11-Cu23   Cu11-Cu24   Cu12-Cu21   Cu12-Cu22   Cu12-Cu23   Cu12-Cu24
+distance = 6.124, Number=2
+    Cu13-C25   Cu16-C25
+distance = 6.626, Number=1
+    Cu15-C25
+distance = 6.707, Number=1
+    Cu14-O26
+distance = 7.155, Number=8
+    Cu1-Cu17   Cu2-Cu18   Cu3-Cu19   Cu4-Cu20   Cu5-Cu21   Cu6-Cu22   Cu7-Cu23   Cu8-Cu24
+distance = 7.169, Number=2
+    Cu13-O26   Cu16-O26
+distance = 7.58, Number=4
+    Cu9-C25   Cu10-C25   Cu11-C25   Cu12-C25
+distance = 7.589, Number=16
+    Cu1-Cu18   Cu1-Cu19   Cu2-Cu17   Cu2-Cu20   Cu3-Cu17   Cu3-Cu20   Cu4-Cu18   Cu4-Cu19   Cu5-Cu22   Cu5-Cu23   Cu6-Cu21   Cu6-Cu24   Cu7-Cu21   Cu7-Cu24   Cu8-Cu22   Cu8-Cu23
+distance = 7.602, Number=1
+    Cu15-O26
+distance = 7.999, Number=8
+    Cu1-Cu20   Cu2-Cu19   Cu3-Cu18   Cu4-Cu17   Cu5-Cu24   Cu6-Cu23   Cu7-Cu22   Cu8-Cu21
+distance = 8.682, Number=4
+    Cu9-O26   Cu10-O26   Cu11-O26   Cu12-O26
+distance = 9.121, Number=16
+    Cu1-Cu21   Cu1-Cu22   Cu1-Cu23   Cu1-Cu24   Cu2-Cu21   Cu2-Cu22   Cu2-Cu23   Cu2-Cu24   Cu3-Cu21   Cu3-Cu22   Cu3-Cu23   Cu3-Cu24   Cu4-Cu21   Cu4-Cu22   Cu4-Cu23   Cu4-Cu24
+distance = 9.155, Number=1
+    Cu7-C25
+distance = 9.498, Number=2
+    Cu5-C25   Cu8-C25
+distance = 9.829, Number=1
+    Cu6-C25
+distance = 10.285, Number=1
+    Cu7-O26
+distance = 10.591, Number=2
+    Cu5-O26   Cu8-O26
+distance = 10.889, Number=1
+    Cu6-O26
+distance = 11.089, Number=4
+    Cu1-C25   Cu2-C25   Cu3-C25   Cu4-C25
+distance = 12.205, Number=4
+    Cu1-O26   Cu2-O26   Cu3-O26   Cu4-O26

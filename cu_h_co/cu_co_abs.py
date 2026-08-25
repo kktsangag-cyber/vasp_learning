@@ -5,9 +5,9 @@ from pymatgen.core.surface import Slab
 from pymatgen.analysis.adsorption import AdsorbateSiteFinder
 from pymatgen.io.vasp.inputs import Poscar, Kpoints, Incar
 
-slab_poscar_path = "cr_o2/cr_110_slab/POSCAR"  # Use CONTCAR if VASP was run
-o2_slab_dir = "cr_o2/cr_o2_slab"
-os.makedirs(o2_slab_dir, exist_ok=True)
+slab_poscar_path = "cu_h_co/cu_110_slab/POSCAR"  # Use CONTCAR if VASP was run
+co_slab_dir = "cu_h_co/cu_co_slab"
+os.makedirs(co_slab_dir, exist_ok=True)
 
 # Slab generation
 slab_struct = Structure.from_file(slab_poscar_path)
@@ -23,42 +23,40 @@ slab = Slab(
     site_properties=slab_struct.site_properties
 )
 
-# build O2 molecule
-o2_mol = Molecule(["O", "O"], [[0, 0, 0], [0, 0, 1.2075]])
+# make a 2x2 Supercell to prevent artificial CO-CO image interactions (0.25 ML coverage)
+slab.make_supercell([2, 2, 1])
+
+# build CO molecule
+co_mol = Molecule(["C", "O"], [[0, 0, 0], [0, 0, 1.13]])
 
 asf = AdsorbateSiteFinder(slab)
 ads_sites = asf.find_adsorption_sites()
 
 top_site = ads_sites["ontop"][0]
-o2_adsorbed_struct = asf.add_adsorbate(o2_mol, top_site)    # Sum of covalent radii is used automatically
+co_adsorbed_struct = asf.add_adsorbate(co_mol, top_site)    # Sum of covalent radii is used automatically
 
-o2_adsorbed_struct.sort(key=lambda site: site.c)
-
-num_sites = len(o2_adsorbed_struct)
-freeze_cutoff = int((num_sites - 2) * 0.6)
+co_adsorbed_struct.sort(key=lambda site: site.z)
 
 selective_dynamics = []
-for i, site in enumerate(o2_adsorbed_struct):
-    if i < freeze_cutoff:
-        selective_dynamics.append([False, False, False]) # Freeze
+for i in range(len(co_adsorbed_struct)):
+    if i < 16:
+        selective_dynamics.append([False, False, False])  # Freeze bottom 4 Cu layers
     else:
-        selective_dynamics.append([True, True, True])    # Relax (Top Cr + O2)
-
-o2_adsorbed_struct.add_site_property("selective_dynamics", selective_dynamics)
+        selective_dynamics.append([True, True, True])     # Relax top Cu layer + CO
 
 # write POSCAR
-Poscar(o2_adsorbed_struct).write_file(os.path.join(o2_slab_dir, "POSCAR"))
-print("POSCAR generated")
+poscar = Poscar(co_adsorbed_struct, selective_dynamics=selective_dynamics)
+poscar.write_file(os.path.join(co_slab_dir, "POSCAR"))
 
-# 7. write KPOINTS & INCAR
-Kpoints.gamma_automatic(kpts=(9, 9, 1)).write_file(os.path.join(o2_slab_dir, "KPOINTS"))
+# write KPOINTS & INCAR
+Kpoints.gamma_automatic(kpts=(5, 5, 1)).write_file(os.path.join(co_slab_dir, "KPOINTS"))
 
 incar_dict = {
-    "SYSTEM": "O2 adsorbed on clean Cr(110)",
+    "SYSTEM": "CO adsorbed on Cu(110) 2x2",
 
     # Start Parameters
     "ISTART": 0,
-    "ISPIN": 2,  
+    "ISPIN": 1,  
     "ICHARG": 2,
     "LWAVE": False,
     "LCHARG": False,
@@ -77,7 +75,7 @@ incar_dict = {
     "EDIFFG": -0.02, 
 }
 
-Incar.from_dict(incar_dict).write_file(os.path.join(o2_slab_dir, "INCAR"))
+Incar.from_dict(incar_dict).write_file(os.path.join(co_slab_dir, "INCAR"))
 print("INCAR and KPOINTS generated")
 
 # POTCAR is the combined POTCAR in the bulk and gas optimization step.
